@@ -1,7 +1,12 @@
-import { Card, Col, Button } from 'antd';
+import { Card, Col } from 'antd';
 
 function FoodBox(props) {
   const { name, calories, image, servings } = props.food;
+
+  const handleDelete = (event) => {
+    console.log(event.target.value);
+    props.deleteFood(event.target.value);
+  };
   return (
     <Col>
       <Card title={name} style={{ width: 230, height: 300, margin: 10 }}>
@@ -12,7 +17,9 @@ function FoodBox(props) {
           <b>Total Calories: {calories * servings}</b>
           kcal
         </p>
-        <Button type="primary"> Delete </Button>
+        <button onClick={handleDelete} type="primary" value={name}>
+          Delete
+        </button>
       </Card>
     </Col>
   );

@@ -22,7 +22,17 @@ function App() {
     setFoodToDisplay(filteredFood);
   };
 
-  const deleteFood = (event) => {};
+  const deleteFood = (foodToDelete) => {
+    const updatedFood = food.filter((food) => {
+      if (food.name.includes(foodToDelete)) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    setFood(updatedFood);
+    setFoodToDisplay(updatedFood);
+  };
 
   return (
     <div className="App">
@@ -31,6 +41,7 @@ function App() {
       {foodToDisplay.map((meal) => (
         <FoodBox
           key={meal.name}
+          deleteFood={deleteFood}
           food={{
             name: meal.name,
             calories: meal.calories,
