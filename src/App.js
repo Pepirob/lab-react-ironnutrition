@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import AddFoodForm from './components/AddFoodForm';
+import EmptyPage from './components/EmptyPage';
 import FoodBox from './components/FoodBox';
 import Search from './components/Search';
 import foods from './foods.json';
@@ -50,6 +51,8 @@ function App() {
           }}
         />
       ))}
+
+      {foodToDisplay.length === 0 && <EmptyPage />}
     </div>
   );
 }
